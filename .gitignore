@@ -1,0 +1,13 @@
+# Rust
+/target
+**/*.rs.bk
+Cargo.lock
+
+# Env / secrets
+.env
+.env.*.local
+
+# Editors
+.vscode/
+.idea/
+.DS_Store

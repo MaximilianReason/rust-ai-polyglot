@@ -1,0 +1,12 @@
+[workspace]
+members = ["llm_core", "polyglot"]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+homepage = "https://github.com/youruser/polyglot-ai"
+repository = "https://github.com/youruser/polyglot-ai"
+readme = "README.md"
+keywords = ["ai", "llm", "cli", "sdk", "rust"]
+categories = ["command-line-utilities", "api-bindings"]

@@ -1,0 +1,36 @@
+[package]
+name = "llm_core"
+version = "0.1.0"
+edition = "2021"
+license.workspace = true
+
+[features]
+default = ["provider-openai", "provider-openrouter"]
+provider-openai   = ["dep:async-openai"]
+provider-anthropic= ["dep:anthropic_sdk"]
+provider-openrouter = ["dep:openrouter_api"]
+provider-hf       = []
+provider-replicate= ["dep:replicate-client"]
+provider-gemini   = ["dep:google-gemini-rs"]
+
+[dependencies]
+# Core
+anyhow = "1"
+thiserror = "1"
+async-trait = "0.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+dotenv = "0.15"
+reqwest = { version = "0.12", features = ["json", "stream", "gzip", "brotli", "deflate", "rustls-tls"] }
+tokio-stream = "0.1"
+
+# SSE helpers (for streaming providers)
+reqwest-sse = { version = "0.4" } # Alt: reqwest-eventsource
+
+# Optional provider SDKs
+async-openai = { version = "0.23", optional = true }           # OpenAI & Azure
+anthropic_sdk = { version = "0.2", optional = true }           # Anthropic
+openrouter_api = { version = "0.3", optional = true }          # OpenRouter
+replicate-client = { version = "0.1", optional = true, package = "replicate-client" }
+google-gemini-rs = { version = "0.4", optional = true }
